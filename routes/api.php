@@ -86,6 +86,8 @@ Route::group([
 
     // Get ALl Iklan
     Route::get('getallcategoryiklan', [GetIklanController::class, 'getAllCategoryIklan']);
+
+    Route::get('logout', [AuthController::class, 'logout']);
 });
 
 // Route::get('/user', function (Request $request) {

@@ -20,7 +20,7 @@ class AuthController extends Controller
             $request->all(),
             [
                 'name' => 'required|string',
-                'email' => 'required|unique:users',
+                'email' => 'required|unique:users|email',
                 'password' => 'required|min:6|confirmed',
                 'num_phone' => 'required',
                 'alamat' => 'required',
@@ -29,9 +29,9 @@ class AuthController extends Controller
             ],
             [
                 'name.required' => 'Please Input Name !',
+                'name.string' => 'Please Input a String !',
                 'alamat.required' => 'Please Input alamat !',
                 'kecamatan.required' => 'Please Input kecamatan !',
-                'name.string' => 'Please Input a String !',
                 'email.required' => 'Please Input Email !',
                 'email.unique' => 'Email Has Been Taken !',
                 'password.required' => 'Please Input Password !',
@@ -68,6 +68,24 @@ class AuthController extends Controller
     // Verify
     public function verify(Request $request)
     {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'email' => 'required|unique:users|email',
+            ],
+            [
+                'email.required' => 'Please Input Email !',
+                'email.unique' => 'Email Has Been Taken !',
+            ]
+        );
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Silahkan Isi Data Dengan Benar',
+                'errors'    => $validator->errors()
+            ], 401);
+        }
         $otp = Otp::identifier($request->email)->attempt($request->code);
 
         if ($otp['status'] != Otp::OTP_PROCESSED) {
@@ -99,12 +117,13 @@ class AuthController extends Controller
             $request->all(),
             [
                 'email' => 'required|email',
-                'password' => 'required'
+                'password' => 'required|min:6'
             ],
             [
-                'email.required' => 'Email Harus Diisi',
-                'email.email' => 'Format email tidak valid',
-                'password.required' => 'Password Harus Diisi',
+                'email.required' => 'Please Input Email !',
+                'email.unique' => 'Email Has Been Taken !',
+                'password.required' => 'Please Input Password !',
+                'password.min' => 'Password must be at least 6 characters !',
             ]
         );
         $user = User::where('email', $request->email)->first();
@@ -164,6 +183,7 @@ class AuthController extends Controller
             'id' => $userData->id,
             'name' => $userData->name,
             'email' => $userData->email,
+            'num_phone' => $userData->num_phone,
             'tentang_saya' => $userData->tentang_saya,
             'pict_profile' => $base64String,
             'alamat' => $userData->alamat,
