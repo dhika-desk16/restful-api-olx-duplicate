@@ -52,7 +52,7 @@ class PostIklanKeperluanPribadiController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'tipe' => 'required',
+                'tipe' => 'nullable',
                 'kondisi' => 'required',
                 'judul_iklan' => 'required',
                 'deskripsi' => 'required',

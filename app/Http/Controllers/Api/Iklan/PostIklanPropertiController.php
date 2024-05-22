@@ -59,6 +59,7 @@ class PostIklanPropertiController extends Controller
                 'judul_iklan' => 'required',
                 'deskripsi' => 'required',
                 'harga' => 'required',
+                'sertifikasi' => 'nullable',
                 'gambar1' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
                 'gambar2' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
                 'gambar3' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
@@ -94,6 +95,7 @@ class PostIklanPropertiController extends Controller
                 'judul_iklan' => $request->input('judul_iklan'),
                 'deskripsi' => $request->input('deskripsi'),
                 'harga' => $request->input('harga'),
+                'sertifikasi' => $request->input('sertifikasi'),
                 'kategori' => $this->kategori,
                 'kode_iklan' => $this->randomString,
             ]);
