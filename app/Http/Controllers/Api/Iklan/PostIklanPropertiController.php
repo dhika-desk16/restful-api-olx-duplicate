@@ -48,7 +48,7 @@ class PostIklanPropertiController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'tipe' => 'required',
+                'tipe' => 'nullable',
                 'luas_bangunan' => 'nullable',
                 'luas_tanah' => 'nullable',
                 'kamar_tidur' => 'nullable',
