@@ -17,6 +17,10 @@ class PostIklanHobiDanOlahragaController extends Controller
     public $userEmail;
     public $kategori;
     public $randomString;
+    public $userName;
+    public $userPictProfile;
+    public $userNumPhone;
+    public $userAlamat;
 
     public function postIklanHobiDanOlahraga(Request $request, $kategori)
     {
@@ -81,6 +85,10 @@ class PostIklanHobiDanOlahragaController extends Controller
         } else {
             $iklan = IklanHobiDanOlahraga::create([
                 'email' => $this->userEmail,
+                'name' => $this->userName,
+                'pict_profile' => $this->userPictProfile,
+                'num_phone' => $this->userNumPhone,
+                'alamat' => $this->userAlamat,
                 'tipe' => $request->input('tipe'),
                 'kondisi' => $request->input('kondisi'),
                 'judul_iklan' => $request->input('judul_iklan'),
@@ -148,6 +156,10 @@ class PostIklanHobiDanOlahragaController extends Controller
             throw new InvalidArgumentException("Tipe tidak valid: $tipeIklan");
         }
         $this->userEmail = auth()->user()->email;
+        $this->userName = auth()->user()->name;
+        $this->userPictProfile = auth()->user()->pict_profile;
+        $this->userNumPhone = auth()->user()->num_phone;
+        $this->userAlamat = auth()->user()->alamat;
         $this->kategori = $kategori;
     }
 

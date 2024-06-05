@@ -17,6 +17,10 @@ class PostIklanKantorDanIndustriController extends Controller
     public $userEmail;
     public $kategori;
     public $randomString;
+    public $userName;
+    public $userPictProfile;
+    public $userNumPhone;
+    public $userAlamat;
 
     public function postIklanKantorDanIndustri(Request $request, $kategori)
     {
@@ -76,6 +80,10 @@ class PostIklanKantorDanIndustriController extends Controller
         } else {
             $iklan = IklanKantorDanIndustri::create([
                 'email' => $this->userEmail,
+                'name' => $this->userName,
+                'pict_profile' => $this->userPictProfile,
+                'num_phone' => $this->userNumPhone,
+                'alamat' => $this->userAlamat,
                 'tipe' => $request->input('tipe'),
                 'kondisi' => $request->input('kondisi'),
                 'judul_iklan' => $request->input('judul_iklan'),
@@ -133,6 +141,10 @@ class PostIklanKantorDanIndustriController extends Controller
             throw new InvalidArgumentException("Invalid tipe: $tipeIklan");
         }
         $this->userEmail = auth()->user()->email;  // Menyimpan email
+        $this->userName = auth()->user()->name;
+        $this->userPictProfile = auth()->user()->pict_profile;
+        $this->userNumPhone = auth()->user()->num_phone;
+        $this->userAlamat = auth()->user()->alamat;
         $this->kategori = $kategori; // Menyimpan kategori
     }
 

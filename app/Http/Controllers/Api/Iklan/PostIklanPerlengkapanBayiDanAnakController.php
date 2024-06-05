@@ -17,6 +17,10 @@ class PostIklanPerlengkapanBayiDanAnakController extends Controller
     public $userEmail;
     public $kategori;
     public $randomString;
+    public $userName;
+    public $userPictProfile;
+    public $userNumPhone;
+    public $userAlamat;
 
     public function postIklanPerlengkapanBayiDanAnak(Request $request, $kategori)
     {
@@ -77,6 +81,10 @@ class PostIklanPerlengkapanBayiDanAnakController extends Controller
         } else {
             $iklan = IklanPerlengkapanBayiDanAnak::create([
                 'email' => $this->userEmail,
+                'name' => $this->userName,
+                'pict_profile' => $this->userPictProfile,
+                'num_phone' => $this->userNumPhone,
+                'alamat' => $this->userAlamat,
                 'kondisi' => $request->input('kondisi'),
                 'judul_iklan' => $request->input('judul_iklan'),
                 'deskripsi' => $request->input('deskripsi'),
@@ -136,8 +144,12 @@ class PostIklanPerlengkapanBayiDanAnakController extends Controller
         } else {
             throw new InvalidArgumentException("Invalid tipe: $tipeIklan");
         }
-        $this->userEmail = auth()->user()->email;  // Menyimpan email
-        $this->kategori = $kategori; // Menyimpan kategori
+        $this->userEmail = auth()->user()->email;
+        $this->userName = auth()->user()->name;
+        $this->userPictProfile = auth()->user()->pict_profile;
+        $this->userNumPhone = auth()->user()->num_phone;
+        $this->userAlamat = auth()->user()->alamat;
+        $this->kategori = $kategori;
     }
 
     private function createImages($gambarArray)

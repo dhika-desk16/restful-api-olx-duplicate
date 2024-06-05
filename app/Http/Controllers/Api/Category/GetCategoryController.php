@@ -103,7 +103,7 @@ class GetCategoryController extends Controller
             $dataIklanArray = $dataIklan->toArray();
             $dataIklanInfo[] = [
                 "data_iklan_" . ($index + 1) => [
-                    'identity_iklan' =>   Arr::only($dataIklanArray, ['kode_iklan', 'email', 'kategori']),
+                    'identity_iklan' =>   Arr::only($dataIklanArray, ['kode_iklan', 'email','name','num_phone','pict_profile', 'kategori']),
                     'data_iklan' => Arr::except($dataIklanArray, ['email', 'kode_iklan', 'kategori']),
                     'data_gambar' => $gambar
                 ]
