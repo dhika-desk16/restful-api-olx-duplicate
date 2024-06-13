@@ -15,16 +15,21 @@ use App\Http\Controllers\Api\Iklan\PostIklanMotorController;
 use App\Http\Controllers\Api\Iklan\PostIklanPerlengkapanBayiDanAnakController;
 use App\Http\Controllers\Api\Iklan\PostIklanPropertiController;
 use App\Http\Controllers\Api\Iklan\PostIklanRumahTanggaController;
+use App\Http\Controllers\Api\WilayahController;
 use App\Http\Controllers\OtpController;
 use App\Http\Controllers\PasangIklanController;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Route;
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('verify', [AuthController::class, 'verify']);
 Route::post('resendotp', [AuthController::class, 'resendOtp']);
 Route::post('login', [AuthController::class, 'login']);
+// Wilayah
+Route::get('provinces', [WilayahController::class, 'getProvinces']);
+Route::get('regencies/{province_id}', [WilayahController::class, 'getRegencies']);
+Route::get('districts/{regency_id}', [WilayahController::class, 'getDistricts']);
+Route::get('villages/{district_id}', [WilayahController::class, 'getVillages']);
 Route::group([
     "middleware" => ["auth:sanctum"]
 ], function () {
@@ -81,12 +86,11 @@ Route::group([
     Route::get('getiklanrumahtangga/{kategori}', [GetCategoryController::class, 'getIklanRumahTangga']);
     Route::get('getiklaniklanproperti/{kategori}', [GetCategoryController::class, 'getiklaniklanproperti']);
 
-
-
-
     // Get ALl Iklan
     Route::get('getallcategoryiklan', [GetIklanController::class, 'getAllCategoryIklan']);
 
+
+    // 
     Route::get('logout', [AuthController::class, 'logout']);
 });
 

@@ -16,7 +16,6 @@ class UserRegistrationOtp implements Otp
         protected string $password,
         protected string $num_phone,
         protected string $alamat,
-        protected string $kecamatan,
         protected ?string $tentang_saya = null
     ) {
     }
@@ -34,7 +33,6 @@ class UserRegistrationOtp implements Otp
                 'num_phone'                 => $this->num_phone,
                 'tentang_saya'                 => $this->tentang_saya,
                 'alamat'                 => $this->alamat,
-                'kecamatan'                 => $this->kecamatan,
                 'password'              => Hash::make($this->password),
                 'email_verified_at'     => now(),
             ]);

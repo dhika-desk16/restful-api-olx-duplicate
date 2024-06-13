@@ -59,18 +59,18 @@ class PostIklanElektronikController extends Controller
                 'judul_iklan' => 'required',
                 'deskripsi' => 'required',
                 'harga' => 'required',
-                'gambar1' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'gambar2' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'gambar3' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'gambar4' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'gambar5' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'gambar6' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'gambar7' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'gambar8' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'gambar9' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'gambar10' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'gambar11' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'gambar12' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
+                'gambar1' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+                'gambar2' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+                'gambar3' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+                'gambar4' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+                'gambar5' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+                'gambar6' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+                'gambar7' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+                'gambar8' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+                'gambar9' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+                'gambar10' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+                'gambar11' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+                'gambar12' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
             ]
         );
 
@@ -84,7 +84,7 @@ class PostIklanElektronikController extends Controller
             $iklan = IklanElektronikDanGadget::create([
                 'email' => $this->userEmail,
                 'name' => $this->userName,
-                'pict_profile' => $this->userPictProfile,
+                
                 'num_phone' => $this->userNumPhone,
                 'alamat' => $this->userAlamat,
                 'merk' => $request->input('merk'),
@@ -151,12 +151,12 @@ class PostIklanElektronikController extends Controller
         } else {
             throw new InvalidArgumentException("Tipe tidak valid: $tipeIklan");
         }
-        $this->userEmail = auth()->user()->email;  
-        $this->userName = auth()->user()->name;  
-        $this->userPictProfile = auth()->user()->pict_profile;  
-        $this->userNumPhone = auth()->user()->num_phone;  
-        $this->userAlamat = auth()->user()->alamat;  
-        $this->kategori = $kategori; 
+        $this->userEmail = auth()->user()->email;
+        $this->userName = auth()->user()->name;
+        $this->userPictProfile = auth()->user()->pict_profile;
+        $this->userNumPhone = auth()->user()->num_phone;
+        $this->userAlamat = auth()->user()->alamat;
+        $this->kategori = $kategori;
     }
 
     private function createImages($gambarArray)

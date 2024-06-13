@@ -24,14 +24,12 @@ class AuthController extends Controller
                 'password' => 'required|min:6|confirmed',
                 'num_phone' => 'required',
                 'alamat' => 'required',
-                'kecamatan' => 'required',
                 'tentang_saya' => 'nullable',
             ],
             [
                 'name.required' => 'Please Input Name !',
                 'name.string' => 'Please Input a String !',
                 'alamat.required' => 'Please Input alamat !',
-                'kecamatan.required' => 'Please Input kecamatan !',
                 'email.required' => 'Please Input Email !',
                 'email.unique' => 'Email Has Been Taken !',
                 'password.required' => 'Please Input Password !',
@@ -57,7 +55,6 @@ class AuthController extends Controller
                 num_phone: $request->num_phone,
                 tentang_saya: $request->tentang_saya,
                 alamat: $request->alamat,
-                kecamatan: $request->kecamatan,
             ),
             Notification::route('mail', $request->email)
         );
@@ -187,7 +184,6 @@ class AuthController extends Controller
             'tentang_saya' => $userData->tentang_saya,
             'pict_profile' => $base64String,
             'alamat' => $userData->alamat,
-            'kecamatan' => $userData->kecamatan,
         ];
 
         return response()->json([
@@ -217,7 +213,6 @@ class AuthController extends Controller
                 'num_phone' => 'string',
                 'tentang_saya' => 'nullable|string',
                 'alamat' => 'nullable|string',
-                'kecamatan' => 'nullable|string',
                 'pict_profile' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             ],
             [
@@ -239,8 +234,6 @@ class AuthController extends Controller
         $user->num_phone = $request->input('num_phone', $user->num_phone);
         $user->tentang_saya = $request->input('tentang_saya', $user->tentang_saya);
         $user->alamat = $request->input('alamat', $user->alamat);
-        $user->kecamatan = $request->input('kecamatan', $user->kecamatan);
-
         if ($request->hasFile('pict_profile')) {
             $image = $request->file('pict_profile');
             $imageData = base64_encode(file_get_contents($image->getRealPath()));
@@ -260,7 +253,6 @@ class AuthController extends Controller
                     'tentang_saya' => $user->tentang_saya,
                     'pict_profile' => $user->pict_profile,
                     'alamat' => $user->alamat,
-                    'kecamatan' => $user->kecamatan,
                 ]
             ], 200);
         } else {

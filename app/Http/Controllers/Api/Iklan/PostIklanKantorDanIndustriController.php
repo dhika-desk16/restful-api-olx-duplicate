@@ -56,18 +56,18 @@ class PostIklanKantorDanIndustriController extends Controller
                 'judul_iklan' => 'required',
                 'deskripsi' => 'required',
                 'harga' => 'required',
-                'gambar1' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'gambar2' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'gambar3' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'gambar4' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'gambar5' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'gambar6' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'gambar7' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'gambar8' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'gambar9' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'gambar10' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'gambar11' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
-                'gambar12' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
+                'gambar1' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+                'gambar2' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+                'gambar3' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+                'gambar4' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+                'gambar5' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+                'gambar6' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+                'gambar7' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+                'gambar8' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+                'gambar9' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+                'gambar10' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+                'gambar11' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+                'gambar12' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
             ]
         );
 
@@ -81,7 +81,7 @@ class PostIklanKantorDanIndustriController extends Controller
             $iklan = IklanKantorDanIndustri::create([
                 'email' => $this->userEmail,
                 'name' => $this->userName,
-                'pict_profile' => $this->userPictProfile,
+
                 'num_phone' => $this->userNumPhone,
                 'alamat' => $this->userAlamat,
                 'tipe' => $request->input('tipe'),
@@ -113,7 +113,7 @@ class PostIklanKantorDanIndustriController extends Controller
     {
         $kategoriMapping = [
             'peralatankantor' => 'Peralatan Kantor',
-            'peralatanusaha' => 'Peralatan Usaha',
+            'perlengkapanusaha' => 'Peralatan Usaha',
             'mesin&keperluanindustri' => 'Mesin & Keperluan Industri',
             'stationary' => 'Stationary',
             'lainlain' => 'Lain-Lain',
@@ -126,7 +126,7 @@ class PostIklanKantorDanIndustriController extends Controller
 
         $tipeIklanArray = [
             'peralatankantor' => 'KDI-PRK',
-            'peralatanusaha' => 'KDI-PRU',
+            'perlengkapanusaha' => 'KDI-PRU',
             'mesin&keperluanindustri' => 'KDI-MES',
             'stationary' => 'KDI-STA',
             'lainlain' => 'KDI-LAI',
