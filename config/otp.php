@@ -29,7 +29,7 @@ return [
     | Number of minutes before OTP expires
     |
     */
-    'expires' => env('OTP_EXPIRES', 15),
+    'expires' => env('OTP_EXPIRES', 3),
 
     /*
     |--------------------------------------------------------------------------
