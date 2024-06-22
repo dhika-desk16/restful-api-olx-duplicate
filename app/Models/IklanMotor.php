@@ -22,4 +22,10 @@ class IklanMotor extends Model
    {
        return $this->hasMany(ImagesDuabelas::class, 'kode_iklan', 'kode_iklan');
    }
+
+   public function favorites()
+   {
+       return $this->hasMany(Favorite::class, 'kode_iklan', 'kode_iklan');
+   }
+  
 }

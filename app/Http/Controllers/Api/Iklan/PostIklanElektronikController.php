@@ -59,6 +59,9 @@ class PostIklanElektronikController extends Controller
                 'judul_iklan' => 'required',
                 'deskripsi' => 'required',
                 'harga' => 'required',
+                'provinces' => 'required',
+                'regencies' => 'required',
+                'districts' => 'required',
                 'gambar1' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
                 'gambar2' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
                 'gambar3' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
@@ -84,7 +87,7 @@ class PostIklanElektronikController extends Controller
             $iklan = IklanElektronikDanGadget::create([
                 'email' => $this->userEmail,
                 'name' => $this->userName,
-                
+
                 'num_phone' => $this->userNumPhone,
                 'alamat' => $this->userAlamat,
                 'merk' => $request->input('merk'),
@@ -92,6 +95,9 @@ class PostIklanElektronikController extends Controller
                 'judul_iklan' => $request->input('judul_iklan'),
                 'deskripsi' => $request->input('deskripsi'),
                 'harga' => $request->input('harga'),
+                'provinces' => $request->input('provinces'),
+                'regencies' => $request->input('regencies'),
+                'districts' => $request->input('districts'),
                 'kategori' => $this->kategori,
                 'kode_iklan' => $this->randomString
             ]);

@@ -59,10 +59,10 @@ class AuthController extends Controller
                 num_phone: $request->num_phone,
                 tentang_saya: $request->tentang_saya,
                 alamat: $request->alamat,
-                provinces: $request->provinces,
-                regencies: $request->regencies,
-                districts: $request->districts,
-                villages: $request->villages,
+                // provinces: $request->provinces,
+                // regencies: $request->regencies,
+                // districts: $request->districts,
+                // villages: $request->villages,
             ),
             Notification::route('mail', $request->email)
         );

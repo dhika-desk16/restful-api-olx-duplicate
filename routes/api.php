@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Category\GetCategoryController;
 use App\Http\Controllers\Api\Iklan\DeleteIklanController;
+use App\Http\Controllers\Api\Iklan\FavoriteController;
 use App\Http\Controllers\Api\Iklan\GetIklanController;
 use App\Http\Controllers\Api\Iklan\PostIklanController;
 use App\Http\Controllers\Api\Iklan\PostIklanElektronikController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\OtpController;
 use App\Http\Controllers\PasangIklanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('verify', [AuthController::class, 'verify']);
@@ -69,10 +71,13 @@ Route::group([
     Route::delete('deleteiklanmobil/{kode_iklan}', [DeleteIklanController::class, 'deleteIklanMobil']);
     Route::delete('deleteiklanmotor/{kode_iklan}', [DeleteIklanController::class, 'deleteIklanMotor']);
     Route::delete('deleteiklanproperti/{kode_iklan}', [DeleteIklanController::class, 'deleteIklanProperti']);
-    Route::delete('deleteiklanrumahtangga/{kode_iklan}', [DeleteIklanController::class, 'deleteIklanRumahTangga']);
     Route::delete('deleteiklanelektronik/{kode_iklan}', [DeleteIklanController::class, 'deleteIklanElektronik']);
+    Route::delete('deleteiklanrumahtangga/{kode_iklan}', [DeleteIklanController::class, 'deleteIklanRumahTangga']);
     Route::delete('deleteiklanhobi/{kode_iklan}', [DeleteIklanController::class, 'deleteIklanHobi']);
     Route::delete('deleteiklanjasa/{kode_iklan}', [DeleteIklanController::class, 'deleteIklanJasa']);
+    Route::delete('deleteiklankantor/{kode_iklan}', [DeleteIklanController::class, 'deleteIklanKantor']);
+    Route::delete('deleteiklankeperluanpribadi/{kode_iklan}', [DeleteIklanController::class, 'deleteIklanKeperluanPribadi']);
+    Route::delete('deleteiklanperlengkapanbayidananak/{kode_iklan}', [DeleteIklanController::class, 'deleteIklanPerlengkapanBayiDanAnak']);
 
     // Get Category
     Route::get('getiklanmobil/{kategori}', [GetCategoryController::class, 'getIklanMobil']);
@@ -89,6 +94,10 @@ Route::group([
     // Get ALl Iklan
     Route::get('getallcategoryiklan', [GetIklanController::class, 'getAllCategoryIklan']);
 
+    // User Favorite
+    Route::post('postuserfavorites/{kode_iklan}', [FavoriteController::class, 'postUserFavorites']);
+    Route::get('getuserfavorites', [FavoriteController::class, 'getUserFavorites']);
+    Route::delete('deleteuserfavorite/{kode_iklan}', [FavoriteController::class, 'deleteUserFavorite']);
 
     // 
     Route::get('logout', [AuthController::class, 'logout']);
