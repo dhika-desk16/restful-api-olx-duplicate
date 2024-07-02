@@ -16,6 +16,7 @@ use App\Http\Controllers\Api\Iklan\PostIklanMotorController;
 use App\Http\Controllers\Api\Iklan\PostIklanPerlengkapanBayiDanAnakController;
 use App\Http\Controllers\Api\Iklan\PostIklanPropertiController;
 use App\Http\Controllers\Api\Iklan\PostIklanRumahTanggaController;
+use App\Http\Controllers\Api\Recomended\RecomendedController;
 use App\Http\Controllers\Api\WilayahController;
 use App\Http\Controllers\OtpController;
 use App\Http\Controllers\PasangIklanController;
@@ -98,6 +99,9 @@ Route::group([
     Route::post('postuserfavorites/{kode_iklan}', [FavoriteController::class, 'postUserFavorites']);
     Route::get('getuserfavorites', [FavoriteController::class, 'getUserFavorites']);
     Route::delete('deleteuserfavorite/{kode_iklan}', [FavoriteController::class, 'deleteUserFavorite']);
+
+    // User Recomendation
+    Route::get('getrecomendedbyfavoritekategori', [RecomendedController::class, 'getRecomendedByFavoriteKategori']);
 
     // 
     Route::get('logout', [AuthController::class, 'logout']);

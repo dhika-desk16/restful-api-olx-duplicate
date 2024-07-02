@@ -50,16 +50,22 @@ class FavoriteController extends Controller
 
         $model = $this->iklanModels[$prefix];
         $favoritable = $model::where('kode_iklan', $kode_iklan)->first();
+        $kategori = $favoritable->kategori;
 
 
         if (!$favoritable) {
             return response()->json(['message' => 'Item not found'], 404);
         }
         $validator = Validator::make(
-            ['kode_iklan' => $kodeIklan, 'email' => $userEmail],
+            [
+                'kode_iklan' => $kodeIklan,
+                'email' => $userEmail,
+                'kategori' => $kategori,
+            ],
             [
                 'kode_iklan' => 'required|unique:favorites',
                 'email' => 'required|email',
+                'kategori' => 'required',
             ]
         );
         if ($validator->fails()) {
@@ -72,6 +78,7 @@ class FavoriteController extends Controller
             $favorite = Favorite::create([
                 'kode_iklan' => $kodeIklan,
                 'email' => $userEmail,
+                'kategori' => $kategori,
             ]);
         }
         return response()->json(['message' => 'Added to favorites', 'data' => $favorite], 201);
@@ -98,7 +105,7 @@ class FavoriteController extends Controller
 
                 if ($images) {
                     for ($i = 1; $i <= 12; $i++) {
-                        $gambar["gambar{$i}"] = $images["gambar{$i}"] ? base64_encode(stream_get_contents($images["gambar{$i}"])) : null;
+                        $gambar["gambar{$i}"] = $images["gambar{$i}"] ? stream_get_contents($images["gambar{$i}"]) : null;
                     }
                 }
 

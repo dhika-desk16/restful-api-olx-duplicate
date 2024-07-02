@@ -15,11 +15,11 @@ class UserRegistrationOtp implements Otp
         protected string $email,
         protected string $password,
         protected string $num_phone,
-        protected string $alamat,
-        // protected string $provinces,
-        // protected string $regencies,
-        // protected string $districts,
-        // protected string $villages,
+        // protected string $alamat,
+        protected string $provinces,
+        protected string $regencies,
+        protected string $districts,
+        protected string $villages,
         protected ?string $tentang_saya = null
     ) {
     }
@@ -36,11 +36,11 @@ class UserRegistrationOtp implements Otp
                 'email'                 => $this->email,
                 'num_phone'                 => $this->num_phone,
                 'tentang_saya'                 => $this->tentang_saya,
-                'alamat'                 => $this->alamat,
-                // 'provinces'                 => $this->provinces,
-                // 'regencies'                 => $this->regencies,
-                // 'districts'                 => $this->districts,
-                // 'villages'                 => $this->villages,
+                // 'alamat'                 => $this->alamat,
+                'provinces'                 => $this->provinces,
+                'regencies'                 => $this->regencies,
+                'districts'                 => $this->districts,
+                'villages'                 => $this->villages,
                 'password'              => Hash::make($this->password),
                 'email_verified_at'     => now(),
             ]);

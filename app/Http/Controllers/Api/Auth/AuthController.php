@@ -23,7 +23,7 @@ class AuthController extends Controller
                 'email' => 'required|unique:users|email',
                 'password' => 'required|min:6|confirmed',
                 'num_phone' => 'required',
-                'alamat' => 'required',
+                'alamat' => 'nullable',
                 'provinces' => 'nullable',
                 'regencies' => 'nullable',
                 'districts' => 'nullable',
@@ -58,11 +58,11 @@ class AuthController extends Controller
                 password: $request->password,
                 num_phone: $request->num_phone,
                 tentang_saya: $request->tentang_saya,
-                alamat: $request->alamat,
-                // provinces: $request->provinces,
-                // regencies: $request->regencies,
-                // districts: $request->districts,
-                // villages: $request->villages,
+                // alamat: $request->alamat,
+                provinces: $request->provinces,
+                regencies: $request->regencies,
+                districts: $request->districts,
+                villages: $request->villages,
             ),
             Notification::route('mail', $request->email)
         );
@@ -192,6 +192,10 @@ class AuthController extends Controller
             'tentang_saya' => $userData->tentang_saya,
             'pict_profile' => $base64String,
             'alamat' => $userData->alamat,
+            'provinces' => $userData->provinces,
+            'regencies' => $userData->regencies,
+            'districts' => $userData->districts,
+            'villages' => $userData->villages,
         ];
 
         return response()->json([
