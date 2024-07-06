@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\Broadcast\BroadcastController;
 use App\Http\Controllers\Api\Category\GetCategoryController;
 use App\Http\Controllers\Api\Iklan\DeleteIklanController;
 use App\Http\Controllers\Api\Iklan\FavoriteController;
@@ -105,6 +106,9 @@ Route::group([
 
     // 
     Route::get('logout', [AuthController::class, 'logout']);
+    // 
+    Route::get('tes', [BroadcastController::class, 'sendMessage']);
+
 });
 
 // Route::get('/user', function (Request $request) {

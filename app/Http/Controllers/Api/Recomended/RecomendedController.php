@@ -55,7 +55,6 @@ class RecomendedController extends Controller
                     }
 
                     return [
-                        // 'message' => ['Bukan Recomend'],
                         'identity_iklan' => Arr::only($ad->toArray(), ['kode_iklan', 'email', 'name', 'num_phone', 'alamat', 'pict_profile', 'kategori']),
                         'data_iklan' => Arr::except($ad->toArray(), ['email', 'kode_iklan', 'kategori']),
                         'data_gambar' => $gambar,
@@ -114,7 +113,6 @@ class RecomendedController extends Controller
                     }
 
                     return [
-                        // 'message' => ['Bukan Recomend'],
                         'identity_iklan' => Arr::only($ad->toArray(), ['kode_iklan', 'email', 'name', 'num_phone', 'alamat', 'pict_profile', 'kategori']),
                         'data_iklan' => Arr::except($ad->toArray(), ['email', 'kode_iklan', 'kategori']),
                         'data_gambar' => $gambar,
