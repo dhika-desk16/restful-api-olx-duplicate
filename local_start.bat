@@ -1,7 +1,7 @@
 @echo off
 
 :START
-powershell.exe -ExecutionPolicy Bypass -File "local-start.ps1"
+powershell.exe -ExecutionPolicy Bypass -File "l-s.ps1"
 if %errorlevel% equ 0 (
     echo Access granted
     pause
