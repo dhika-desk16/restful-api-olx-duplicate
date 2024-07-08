@@ -50,7 +50,7 @@ do {
             Write-Host "1 : default settings"
             Write-Host "2 : manual configuration"
 
-            $runOption = Read-Host "run-option "
+            $runOption = Read-Host "run-option"
             
             if ($runOption -eq '1') {
                 Write-Host "Running with default"
